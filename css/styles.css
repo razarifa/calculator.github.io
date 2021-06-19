@@ -27,6 +27,7 @@ html {
  width: 100%;
  height: 40%;
  display: flex;
+ overflow: hidden;
 }
 #upper-part div {
  height: 100%;
@@ -38,6 +39,7 @@ html {
  justify-content: flex-end;
  align-items: flex-end;
  padding: 30px;
+
  font-size: 4em;
 }
 #lower-part {

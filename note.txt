@@ -1,0 +1,65 @@
+[...buttons].forEach((button) => {
+  button.addEventListener("click", (e) => {
+   if (button.innerText == "AC") {
+    part.innerText = "";
+   } else if (button.innerText == "+/-") {
+    part.innerText = -1 * part.innerText;
+   } else if (
+    button.innerText == 1 ||
+    button.innerText == 2 ||
+    button.innerText == 3 ||
+    button.innerText == 4 ||
+    button.innerText == 5 ||
+    button.innerText == 6 ||
+    button.innerText == 7 ||
+    button.innerText == 8 ||
+    button.innerText == 9 ||
+    button.innerText == 0 ||
+    button.innerText == "." ||
+    button.innerText == "+" ||
+    button.innerText == "-" ||
+    button.innerText == "*" ||
+    button.innerText == "/"
+   ) {
+    part.innerText += button.innerText;
+   } else if (button.innerText == "=") {
+    let eded = part.innerText.split(/[*\-+/]+/);
+    for (let i = 0; i < part.innerText.length; i++) {
+     if (
+      part.innerText[i] == "+" ||
+      part.innerText[i] == "-" ||
+      part.innerText[i] == "*" ||
+      part.innerText[i] == "/"
+     ) {
+      op = part.innerText[i];
+     }
+    }
+    if (op == "/" && Number(eded[0]) % Number(eded[1]) == 0) {
+     part.innerText = parseInt(operate(op, Number(eded[0]), Number(eded[1])));
+    } else {
+     part.innerText = operate(op, Number(eded[0]), Number(eded[1]));
+    }
+   }
+  });
+ });
+
+
+  console.log(event.target.innerText);
+ if (/^\d+$/.test(event.target.innerText)) {
+  
+ }
+
+
+  if (Number(array[0]) && Number(array[2])) {
+   if (count > 1) {
+    array[0] = Number(array[0]) + Number(array[2]);
+    part.innerText = array[0];
+    array[1] = event.target.innerText;
+   }
+  } else {
+   array[1] = event.target.innerText;
+   array[0] = part.innerText;
+   part.innerText = "";
+   ++count;
+   console.log(array[2]);
+  }
