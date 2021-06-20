@@ -46,6 +46,9 @@ function display(event) {
  if (!event.target) {
   event.target = event;
  }
+ let audio = document.querySelector("audio");
+ audio.currentTime = 0;
+ audio.play();
  if (/[0-9\.]+$/.test(event.target.innerText)) {
   if (array.length == 1) {
    return;
@@ -191,6 +194,9 @@ window.addEventListener("keydown", (e) => {
  [...buttons].forEach((button) => {
   if (e.which == button.getAttribute("data-key")) {
    display(button);
+   let audio = document.querySelector("audio");
+   audio.currentTime = 0;
+   audio.play();
   }
  });
 });
