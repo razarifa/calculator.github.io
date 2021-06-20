@@ -85,7 +85,17 @@ function display(event) {
      operate(array[1], Number(array[0]), Number(array[2]))
     );
    } else {
-    part.innerText = operate(array[1], Number(array[0]), Number(array[2]));
+    part.innerText = "";
+    if (array[1] == "/" && Number(array[0]) % Number(array[2]) == 0) {
+     part.innerText = parseInt(
+      operate(array[1], Number(array[0]), Number(array[2]))
+     );
+    } else {
+     part.innerText = operate(array[1], Number(array[0]), Number(array[2]));
+    }
+    array[1] = undefined;
+    array[0] = undefined;
+    array[2] = undefined;
    }
    array[1] = event.target.innerText;
   } else if (array[1] === "" && array[0] === "") {

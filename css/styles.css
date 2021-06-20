@@ -66,10 +66,3 @@ html {
  border-style: solid;
  border: 2px solid #2f3130;
 }
-@media (max-width: 800px) {
- .caculator-container {
-  height: 80%;
-  width: 80%;
-  padding: 10px;
- }
-}
