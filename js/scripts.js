@@ -48,7 +48,7 @@ function display(event) {
    return;
   } else if (array.length == 0 || array.length == 2) {
    operand += event.target.innerText;
-   part.innerText = operand;
+   part.innerText = operand.substr(0, 6);
   }
   [...document.querySelectorAll("button")].forEach((button) => {
    button.style.border = "1px solid #2f3130";
@@ -100,6 +100,10 @@ function display(event) {
      }
      result = operate(array[1], Number(array[0]), Number(array[2]));
     }
+    if (result.toString().includes(".")) {
+     result = result.toFixed(2);
+     console.log(result);
+    }
 
     array = [];
     array.push(result);
@@ -137,6 +141,10 @@ function display(event) {
      array[2] = "1";
     }
     result = operate(array[1], Number(array[0]), Number(array[2]));
+   }
+   if (result.toString().includes(".")) {
+    result = parseFloat(result).toFixed(2);
+    console.log(result);
    }
    array = [];
    array.push(result);
