@@ -89,3 +89,7 @@ html {
   height: 75%;
  }
 }
+.last-btn {
+ width: 38% !important;
+ color: #feb801 !important;
+}
