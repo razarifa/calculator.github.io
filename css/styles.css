@@ -22,6 +22,9 @@ html {
  display: flex;
  flex-direction: column;
  padding: 0px;
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+  rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+ border-radius: 8px;
 }
 .caculator-container #upper-part {
  width: 100%;
@@ -56,11 +59,33 @@ html {
  background-color: #2f3130;
  color: white;
  border: none;
- border: 1px solid rgb(63, 60, 60);
- border-style: groove;
- /* transition: 0.5s all; */
-}
-#lower-part button:active {
+ /* border: 1px solid rgb(63, 60, 60); */
+ border: 1px solid #2f3130;
  border-style: solid;
- border: 2px solid #2f3130;
+ transition: 0.2s all;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.BG {
+ box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+  rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px;
+}
+@media (max-width: 690px) {
+ #upper-part .part {
+  border-bottom: 2px solid #feb801;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 30px;
+  font-size: 2em;
+ }
+ .caculator-container {
+  width: 80%;
+  height: 75%;
+  padding: 20px;
+ }
+ button {
+  padding: 20px;
+ }
 }

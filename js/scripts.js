@@ -40,72 +40,133 @@ function operate(op, a, b) {
 function Invert(num) {
  return -1 * Number(num);
 }
-let a = 0,
- b = 0,
- op,
- counter = 0;
-let array = ["", "", ""];
-let p;
+let operand = "",
+ array = [];
 function display(event) {
  if (/[0-9\.]+$/.test(event.target.innerText)) {
-  if (array[1] != "") {
-   part.innerText = "";
-   part.innerText = array[2] + event.target.innerText;
-   array[2] = part.innerText;
-  } else {
-   part.innerText += event.target.innerText;
+  if (array.length == 1) {
+   return;
+  } else if (array.length == 0 || array.length == 2) {
+   operand += event.target.innerText;
+   part.innerText = operand;
   }
- }
- if (event.target.innerText == "AC") {
+  [...document.querySelectorAll("button")].forEach((button) => {
+   button.style.border = "1px solid #2f3130";
+  });
+ } else if (/[*\-+/]+/.test(event.target.innerText)) {
+  if (event.target.innerText == "+/-") {
+   part.innerText = -1 * part.innerText;
+   operand = part.innerText;
+  } else {
+   [...document.querySelectorAll("button")].filter((button) => {
+    if (button.innerText == event.target.innerText) {
+     button.style.border = "1px solid #dbba35";
+    } else {
+     button.style.border = "1px solid #2f3130";
+    }
+   });
+   if (array.length == 0 || array.length == 2) {
+    if (event.target.innerText != "/" && event.target.innerText != "*") {
+     array.push(operand);
+     operand = "";
+    } else {
+     array.push(operand);
+     operand = "";
+    }
+   }
+
+   if (array.length == 1) {
+    array.push(event.target.innerText);
+   } else if (array.length == 2) {
+    array[array.length - 1] = event.target.innerText;
+   } else if (array.length === 3) {
+    let result;
+    if (array[1] == "/") {
+     if (array[2] == "") {
+      array[2] = "1";
+     }
+     if (array[1] == "/") {
+      if (Number(array[0]) % Number(array[2]) == 0) {
+       result = parseInt(operate(array[1], Number(array[0]), Number(array[2])));
+      } else {
+       result = parseFloat(
+        operate(array[1], Number(array[0]), Number(array[2]))
+       ).toFixed(2);
+      }
+     }
+    } else {
+     if (array[1] == "*" && array[2] == "") {
+      array[2] = "1";
+     }
+     result = operate(array[1], Number(array[0]), Number(array[2]));
+    }
+
+    array = [];
+    array.push(result);
+    array.push(event.target.innerText);
+    part.innerText = result;
+   }
+  }
+ } else if (event.target.innerText === "=") {
+  if (array.length == 0 || array.length == 2) {
+   if (event.target.innerText != "/" && event.target.innerText != "*") {
+    array.push(operand);
+    operand = "";
+   } else {
+    array.push(operand);
+    operand = "";
+   }
+  }
+  if (array.length == 0 || array.length == 1 || array.length == 2) {
+   return;
+  } else {
+   let result;
+   if (array[1] == "/") {
+    if (array[2] == "") {
+     array[2] = "1";
+    }
+    if (Number(array[0]) % Number(array[2]) == 0) {
+     result = parseInt(operate(array[1], Number(array[0]), Number(array[2])));
+    } else {
+     result = parseFloat(
+      operate(array[1], Number(array[0]), Number(array[2]))
+     ).toFixed(2);
+    }
+   } else {
+    if (array[1] == "*" && array[2] == "") {
+     array[2] = "1";
+    }
+    result = operate(array[1], Number(array[0]), Number(array[2]));
+   }
+   array = [];
+   array.push(result);
+   console.log(array);
+   part.innerText = result;
+  }
+ } else if (event.target.innerText == "AC") {
+  array = [];
   part.innerText = "";
+  [...document.querySelectorAll("button")].forEach(
+   (button) => (button.style["border"] = "none")
+  );
  }
  if (event.target.innerText == "C") {
   let num = part.innerText.split("");
   num.pop();
   part.innerText = num.join("");
- }
- if (event.target.innerText == "=") {
-  if (array[0] != "" && array[1] != "" && array[2] != "") {
-   if (array[1] == "/" && Number(array[0]) % Number(array[2]) == 0) {
-    part.innerText = parseInt(
-     operate(array[1], Number(array[0]), Number(array[2]))
-    );
-   } else {
-    part.innerText = operate(array[1], Number(array[0]), Number(array[2]));
-   }
-  }
-  array[1] = "";
-  array[0] = "";
-  array[2] = "";
- }
- if (/[*\-+/]+/.test(event.target.innerText)) {
-  if (array[1] != "") {
-   if (array[1] == "/" && Number(array[0]) % Number(array[2]) == 0) {
-    part.innerText = parseInt(
-     operate(array[1], Number(array[0]), Number(array[2]))
-    );
-   } else {
-    part.innerText = "";
-    if (array[1] == "/" && Number(array[0]) % Number(array[2]) == 0) {
-     part.innerText = parseInt(
-      operate(array[1], Number(array[0]), Number(array[2]))
-     );
-    } else {
-     part.innerText = operate(array[1], Number(array[0]), Number(array[2]));
-    }
-    array[1] = undefined;
-    array[0] = undefined;
-    array[2] = undefined;
-   }
-   array[1] = event.target.innerText;
-  } else if (array[1] === "" && array[0] === "") {
-   array[1] = event.target.innerText;
-   array[0] = part.innerText;
-  }
+  operand = part.innerText;
  }
 }
 
 //events
 [...buttons].forEach((button) => {
  button.addEventListener("click", display);
+});
+[...buttons].forEach((button) => {
+ button.addEventListener("mouseenter", () => {
+  button.classList.add("BG");
+ });
+ button.addEventListener("mouseleave", () => {
+  button.classList.remove("BG");
+ });
 });
