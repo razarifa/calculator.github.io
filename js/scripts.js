@@ -68,7 +68,6 @@ function calculate(array) {
  }
  if (result.toString().includes(".")) {
   result = parseFloat(result).toFixed(2);
-  console.log(result);
  }
  if (result.toString().length > 12) {
   document.querySelector(".part").style["font-size"] = "120%";
@@ -88,35 +87,44 @@ function display(event) {
    part.innerText = operand.substr(0, 8);
    //I don't let to enter more than 8 digits
   }
- } else if (/[*\-+/]+/.test(event.target.innerText)) {
-  if (event.target.innerText == "+/-") {
-   part.innerText = -1 * part.innerText;
-   operand = part.innerText;
+ } else if (event.target.innerText == "+/-") {
+  part.innerText = -1 * part.innerText;
+
+  if (array[1] === undefined) {
+   array[0] = part.innerText;
+   operand = "";
   } else {
-   [...document.querySelectorAll("button")].forEach((button) => {
-    if (button.innerText === event.target.innerText) {
-     button.style.border = "1px solid #dbba35";
-    } else {
-     button.style.border = "1px solid #2f3130";
-    }
-   });
-   if (array.length === 0 || array.length === 2) {
-    array.push(operand);
-    operand = "";
-   }
+   array[0] = part.innerText;
+   array.pop();
+  }
 
-   if (array.length == 1) {
-    array.push(event.target.innerText);
-   } else if (array.length == 2) {
-    array[array.length - 1] = event.target.innerText;
-   } else if (array.length === 3) {
-    calculate(array);
-
-    array = [];
-    array.push(result);
-    array.push(event.target.innerText);
-    part.innerText = result;
+  [...document.querySelectorAll("button")].forEach(
+   (button) => (button.style["border"] = "none")
+  );
+ } else if (/[*\-+/]+/.test(event.target.innerText)) {
+  [...document.querySelectorAll("button")].forEach((button) => {
+   if (button.innerText === event.target.innerText) {
+    button.style.border = "1px solid #dbba35";
+   } else {
+    button.style.border = "1px solid #2f3130";
    }
+  });
+  if (array.length === 0 || array.length === 2) {
+   array.push(operand);
+   operand = "";
+  }
+
+  if (array.length == 1) {
+   array.push(event.target.innerText);
+  } else if (array.length == 2) {
+   array[array.length - 1] = event.target.innerText;
+  } else if (array.length === 3) {
+   calculate(array);
+
+   array = [];
+   array.push(result);
+   array.push(event.target.innerText);
+   part.innerText = result;
   }
  } else if (event.target.innerText === "=") {
   if (array.length == 0 || array.length == 2) {
@@ -132,7 +140,6 @@ function display(event) {
    return;
   }
  } else if (event.target.innerText == "AC") {
-  console.log(part.innerText);
   array = [];
   part.innerText = "";
   operand = "";
