@@ -80,8 +80,7 @@ function display(event) {
  }
  startAudio();
  if (/[0-9\.]+$/.test(event.target.innerText)) {
-  if(event.target.innerText=='.' && part.innerText.includes('.')){
-return;}else{
+ 
   if (array.length === 1) {
    return;
   } else if (array.length === 0 || array.length === 2) {
@@ -103,7 +102,7 @@ return;}else{
   [...document.querySelectorAll("button")].forEach(
    (button) => (button.style["border"] = "none")
   );
- }} else if (/[*\-+/]+/.test(event.target.innerText)) {
+ }else if (/[*\-+/]+/.test(event.target.innerText)) {
   [...document.querySelectorAll("button")].forEach((button) => {
    if (button.innerText === event.target.innerText) {
     button.style.border = "1px solid #dbba35";
