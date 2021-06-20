@@ -48,7 +48,7 @@ function display(event) {
    return;
   } else if (array.length == 0 || array.length == 2) {
    operand += event.target.innerText;
-   part.innerText = operand.substr(0, 6);
+   part.innerText = operand.substr(0, 8);
   }
   [...document.querySelectorAll("button")].forEach((button) => {
    button.style.border = "1px solid #2f3130";
