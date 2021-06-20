@@ -80,7 +80,7 @@ function display(event) {
  }
  startAudio();
  if (/[0-9\.]+$/.test(event.target.innerText)) {
-  if(event.target=='.' && part.index.includes('.')){
+  if(event.target.innerText=='.' && part.index.includes('.')){
 return;}
   if (array.length === 1) {
    return;
