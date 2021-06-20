@@ -47,7 +47,7 @@ let a = 0,
 let array = [];
 
 function display(event) {
- if (/^\d+$/.test(event.target.innerText)) {
+ if (/[0-9\.]+$/.test(event.target.innerText)) {
   part.innerText += event.target.innerText;
   array[2] = Number(part.innerText);
  }
@@ -83,7 +83,6 @@ function display(event) {
     array[0] = part.innerText;
     part.innerText = "";
    } else {
-    part.innerText = "";
     if (array[1] == "/" && Number(array[0]) % Number(array[2]) == 0) {
      part.innerText = parseInt(
       operate(array[1], Number(array[0]), Number(array[2]))
