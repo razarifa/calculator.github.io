@@ -19,8 +19,8 @@ html {
 }
 .caculator-container {
  height: 80%;
- width: 50%;
- background-color: #2f3130;
+ width: 40%;
+background-color: #2f3130;
  color: aliceblue;
  display: flex;
  flex-direction: column;
