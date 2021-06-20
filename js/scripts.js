@@ -105,7 +105,7 @@ function display(event) {
      console.log(result);
     }
     if (result.toString.length > 12) {
-     document.querySelector(".part").style["font-size"] = "30px";
+     document.querySelector(".part").style["font-size"] = "120%";
     }
 
     array = [];
@@ -150,7 +150,7 @@ function display(event) {
     console.log(result);
    }
    if (result.toString().length > 12) {
-    document.querySelector(".part").style["font-size"] = "30px";
+    document.querySelector(".part").style["font-size"] = "120%";
    }
    array = [];
    array.push(result);
