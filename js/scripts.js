@@ -101,8 +101,11 @@ function display(event) {
      result = operate(array[1], Number(array[0]), Number(array[2]));
     }
     if (result.toString().includes(".")) {
-     result = result.toFixed(2);
+     result = parseFloat(result).toFixed(2);
      console.log(result);
+    }
+    if (result.toString.length > 12) {
+     document.querySelector(".part").style["font-size"] = "30px";
     }
 
     array = [];
@@ -145,6 +148,9 @@ function display(event) {
    if (result.toString().includes(".")) {
     result = parseFloat(result).toFixed(2);
     console.log(result);
+   }
+   if (result.toString().length > 12) {
+    document.querySelector(".part").style["font-size"] = "30px";
    }
    array = [];
    array.push(result);
