@@ -164,8 +164,10 @@ function display(event) {
    part.innerText = result;
   }
  } else if (event.target.innerText == "AC") {
+  console.log(part.innerText);
   array = [];
   part.innerText = "";
+  operand = "";
   [...document.querySelectorAll("button")].forEach(
    (button) => (button.style["border"] = "none")
   );
