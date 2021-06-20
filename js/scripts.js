@@ -43,6 +43,9 @@ function Invert(num) {
 let operand = "",
  array = [];
 function display(event) {
+ if (!event.target) {
+  event.target = event;
+ }
  if (/[0-9\.]+$/.test(event.target.innerText)) {
   if (array.length == 1) {
    return;
@@ -104,7 +107,7 @@ function display(event) {
      result = parseFloat(result).toFixed(2);
      console.log(result);
     }
-    if (result.toString.length > 12) {
+    if (result.toString().length > 12) {
      document.querySelector(".part").style["font-size"] = "120%";
     }
 
@@ -182,5 +185,12 @@ function display(event) {
  });
  button.addEventListener("mouseleave", () => {
   button.classList.remove("BG");
+ });
+});
+window.addEventListener("keydown", (e) => {
+ [...buttons].forEach((button) => {
+  if (e.which == button.getAttribute("data-key")) {
+   display(button);
+  }
  });
 });
