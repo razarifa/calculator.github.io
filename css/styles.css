@@ -1,4 +1,5 @@
 html {
+ background-color: orange;
  background: url(../images/bg.png) no-repeat center center fixed;
  -webkit-background-size: cover;
  -moz-background-size: cover;
@@ -25,6 +26,7 @@ html {
  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
   rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
  border-radius: 8px;
+ margin-bottom: 4%;
 }
 .caculator-container #upper-part {
  width: 100%;
