@@ -48,7 +48,6 @@ function display(event) {
  }
  let audio = document.querySelector("audio");
  audio.currentTime = 0;
- audio.volume = 0.5;
  audio.play();
  if (/[0-9\.]+$/.test(event.target.innerText)) {
   if (array.length == 1) {
@@ -197,7 +196,6 @@ window.addEventListener("keydown", (e) => {
    display(button);
    let audio = document.querySelector("audio");
    audio.currentTime = 0;
-   audio.volume = 0.5;
    audio.play();
   }
  });
