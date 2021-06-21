@@ -130,6 +130,9 @@ function display(event) {
    part.innerText = result;
   }
  } else if (event.target.innerText === "=") {
+  [...document.querySelectorAll("button")].forEach(
+   (button) => (button.style["border"] = "none")
+  );
   if (array.length == 0 || array.length == 2) {
    array.push(operand);
    operand = "";
