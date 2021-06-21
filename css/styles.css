@@ -19,8 +19,8 @@ html {
 }
 .caculator-container {
  height: 80%;
- width: 40%;
-background-color: #2f3130;
+ width: 30%;
+ background-color: #2f3130;
  color: aliceblue;
  display: flex;
  flex-direction: column;
@@ -45,7 +45,7 @@ background-color: #2f3130;
  justify-content: flex-end;
  align-items: flex-end;
  padding: 30px;
- font-size: 4em;
+ font-size: 2em;
 }
 #lower-part {
  height: 100%;
@@ -75,14 +75,14 @@ background-color: #2f3130;
  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
   rgba(0, 0, 0, 0.09) 0px 8px 4px;
 }
-@media (max-width: 690px) {
+@media (max-width: 700px) {
  #upper-part .part {
   border-bottom: 2px solid #feb801;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   padding: 30px;
-  font-size: 2em;
+  font-size: 1em;
  }
  .caculator-container {
   width: 80%;
